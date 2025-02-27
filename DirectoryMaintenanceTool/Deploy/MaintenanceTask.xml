@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
+	<RegistrationInfo>
+		<Date>2024-02-27T13:00:00</Date>
+		<Author>DirectoryMaintenanceTool</Author>
+		<Description>執行目錄維護工具，進行目錄清理和壓縮</Description>
+	</RegistrationInfo>
+	<Triggers>
+		<CalendarTrigger>
+			<StartBoundary>2024-02-27T02:00:00</StartBoundary>
+			<Enabled>true</Enabled>
+			<ScheduleByDay>
+				<DaysInterval>1</DaysInterval>
+			</ScheduleByDay>
+		</CalendarTrigger>
+	</Triggers>
+	<Principals>
+		<Principal id="Author">
+			<LogonType>Password</LogonType>
+			<RunLevel>HighestAvailable</RunLevel>
+		</Principal>
+	</Principals>
+	<Settings>
+		<MultipleInstancesPolicy>IgnoreNew</MultipleInstancesPolicy>
+		<DisallowStartIfOnBatteries>false</DisallowStartIfOnBatteries>
+		<StopIfGoingOnBatteries>false</StopIfGoingOnBatteries>
+		<AllowHardTerminate>true</AllowHardTerminate>
+		<StartWhenAvailable>true</StartWhenAvailable>
+		<RunOnlyIfNetworkAvailable>false</RunOnlyIfNetworkAvailable>
+		<IdleSettings>
+			<StopOnIdleEnd>false</StopOnIdleEnd>
+			<RestartOnIdle>false</RestartOnIdle>
+		</IdleSettings>
+		<AllowStartOnDemand>true</AllowStartOnDemand>
+		<Enabled>true</Enabled>
+		<Hidden>false</Hidden>
+		<RunOnlyIfIdle>false</RunOnlyIfIdle>
+		<WakeToRun>false</WakeToRun>
+		<ExecutionTimeLimit>PT1H</ExecutionTimeLimit>
+		<Priority>7</Priority>
+	</Settings>
+	<Actions Context="Author">
+		<Exec>
+			<Command>%DEPLOYPATH%\RunMaintenanceTool.bat</Command>
+			<WorkingDirectory>%DEPLOYPATH%</WorkingDirectory>
+		</Exec>
+	</Actions>
+</Task>
